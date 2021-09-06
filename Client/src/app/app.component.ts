@@ -12,13 +12,13 @@ export class AppComponent implements OnInit {
 
   title = 'بازارگاه سفارشی سازی کالا و خدمات الماس';
   
-  products: IProduct[] = [];
+  products: any[] | undefined;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.http.get('https://localhost:5001/api/products?pageSize=50').subscribe(
-      (response: IPagination) => {
+      (response: any) => {
       this.products = response.data;
     }, error =>{
       console.log(error);
