@@ -1,0 +1,14 @@
+<header>
+    <span *ngIf="totalCount && totalCount > 0">نمایش
+        <strong>
+            {{(pageNumber-1) * pageSize+1}} -
+            {{pageNumber*pageSize
+            > this.totalCount
+            ? this.totalCount
+            : pageNumber*pageSize
+            }}
+        </strong> از <strong>{{this.totalCount}}</strong> مورد</span>
+    <span *ngIf="totalCount === 0">
+        هیچ موردی برای نمایش وجود ندارد
+    </span>
+</header>
