@@ -6,14 +6,33 @@ import { TestErrorComponent } from './core/test-error/test-error.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {path:'' , component: HomeComponent},
-  {path:'test-error' , component: TestErrorComponent},
-  {path:'server-error' , component: ServerErrorComponent},
-  {path:'not-found' , component: NotFoundComponent},
-  {path:'shop' , loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule)},
-  {path: '**' , redirectTo:'' , pathMatch:'full'}
-
-
+  {
+    path: '',
+    component: HomeComponent,
+    data: { breadcrumb: 'خانه' },
+  },
+  {
+    path: 'test-error',
+    component: TestErrorComponent,
+    data: { breadcrumb: 'پشتیبانی و خطایابی' },
+  },
+  {
+    path: 'server-error',
+    component: ServerErrorComponent,
+    data: { breadcrumb: ' خطای سرور ' },
+  },
+  {
+    path: 'not-found',
+    component: NotFoundComponent,
+    data: { breadcrumb: ' یافت نشده ' },
+  },
+  {
+    path: 'shop',
+    loadChildren: () =>
+      import('./shop/shop.module').then((mod) => mod.ShopModule),
+    data: { breadcrumb: ' بازارگاه ' },
+  },
+  { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
 ];
 
 @NgModule({
