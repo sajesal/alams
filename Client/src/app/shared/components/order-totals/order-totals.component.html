@@ -1,0 +1,21 @@
+<div class="bg-light px-4 py-3 text-uppercase font-weight-bold">
+    خلاصه خرید
+</div>
+
+<div class="p-4">
+    <p class="font-italic mb-4">هزینه ارسال با توجه به انتخاب شما محاسبه خواهد شد</p>
+    <ul class="list-unstyled mb-4" *ngIf="(basketTotal$ | async)">
+        <li class="d-flex justify-content-between py-3 border-bottom">
+            <strong class="text-muted">جمع</strong>
+            <strong >{{(basketTotal$ | async).subtotal | currency}}</strong>
+        </li>
+        <li class="d-flex justify-content-between py-3 border-bottom">
+            <strong class="text-muted">هزینه‌ی بسته بندی و ارسال</strong>
+            <strong >{{(basketTotal$ | async).shipping | currency}}</strong>
+        </li>
+        <li class="d-flex justify-content-between py-3 border-bottom">
+            <strong class="text-muted">مجموع کل</strong>
+            <strong >{{(basketTotal$ | async).total | currency}}</strong>
+        </li>
+    </ul>
+</div>

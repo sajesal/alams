@@ -19,24 +19,36 @@ const routes: Routes = [
   {
     path: 'server-error',
     component: ServerErrorComponent,
-    data: { breadcrumb: ' خطای سرور ' },
+    data: { breadcrumb: ' خطای سرور ' }
   },
   {
     path: 'not-found',
     component: NotFoundComponent,
-    data: { breadcrumb: ' یافت نشده ' },
+    data: { breadcrumb: ' یافت نشده ' }
   },
   {
     path: 'shop',
     loadChildren: () =>
-      import('./shop/shop.module').then((mod) => mod.ShopModule),
-    data: { breadcrumb: ' بازارگاه ' },
+      import('./shop/shop.module').then(mod => mod.ShopModule),
+    data: { breadcrumb: ' بازارگاه ' }
+  },
+  {
+    path: 'basket',
+    loadChildren: () =>
+      import('./basket/basket.module').then(mod => mod.BasketModule),
+    data: { breadcrumb: ' سبد ' }
+  },
+  {
+    path: 'checkout',
+    loadChildren: () =>
+      import('./checkout/checkout.module').then(mod => mod.CheckoutModule),
+    data: { breadcrumb: ' پرداخت ' }
   },
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
